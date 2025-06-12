@@ -96,14 +96,12 @@ nav a:hover {
   flex-wrap: nowrap; /* Prevent wrapping so cards stay in a row */
   overflow-x: auto;  /* Allow horizontal scrolling if there are many cards */
   justify-content: flex-start; /* Align cards to the left */
-  gap: 20px; /* space between cards */
-  padding: 30px 10px;
+  gap: 3vw; /* Use a relative gap between cards */
+  padding: 3vw 3vw 3vw 3vw; /* Use relative padding for left and right spacing */
   width: 100%;                /* Make sure section is not wider than the viewport */
   max-width: 100%;            /* Prevent section from overflowing the viewport width */
   box-sizing: border-box;     /* Include padding and border in the width */
-  /* Removed: max-width: 100vw; */
-  /* background-color: #e0f2f1; /!* lighter teal *!/*/
-  /* Add smooth scrolling for a better user experience */
+  /* background-color: #e0f2f1; */
   scroll-behavior: smooth;
   scrollbar-width: thin; /* For Firefox: make scrollbar thinner */
   scrollbar-color: #b2dfdb transparent; /* For Firefox: color and transparent track */
@@ -139,9 +137,9 @@ nav a:hover {
   background-color: white;
   border: 1px solid #c8e6c9;
   border-radius: 8px;
-  width: 250px;         /* All cards have the same width */
-  min-width: 250px;     /* Prevent cards from shrinking */
-  max-width: 250px;     /* Prevent cards from growing */
+  width: calc((100% - 4 * 3vw) / 5); /* 5 cards, 4 gaps of 3vw each */
+  min-width: 160px; /* Keep a minimum width for small screens */
+  max-width: 260px; /* Keep a maximum width for large screens */
   height: 340px;        /* Set a fixed height for all cards */
   box-sizing: border-box; /* Include padding and border in the height */
   display: flex;        /* Use flex to align content vertically */
@@ -165,6 +163,17 @@ nav a:hover {
   display: block;
 }
 
+.card h2 {
+  /* Reduce space below the card title */
+  margin-bottom: 0.4em; /* Less space under the title */
+  margin-top: 0.8em;    /* Optional: slightly less space above the title */
+}
+
+.card p {
+  /* Reduce space above the description */
+  margin-top: 0.4em;    /* Less space above the description */
+}
+
 /* CTA (Call to Action) section */
 .cta {
   /* Use a smooth gradient by spreading color stops from 0% to 100% */
@@ -175,6 +184,11 @@ nav a:hover {
   /* Reduce extra bottom padding so there's less space under the button */
   padding-bottom: 40px;
   flex-shrink: 0;
+  /* Prevent the button's hover scale from affecting the section's height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta button {
@@ -188,6 +202,7 @@ nav a:hover {
   margin-top: 15px;
   /* Add transition for smooth scaling and border effect */
   transition: transform 0.2s, border 0.2s;
+  will-change: transform; /* Helps keep the button's scale effect smooth and isolated */
 }
 
 /* Scale up and add border when hovering over the subscribe button */
@@ -209,7 +224,7 @@ nav a:hover {
   background: linear-gradient(90deg, #2e8b57 0%, #66bb6a 100%); /* smooth green gradient */
   color: white;
   text-align: center;
-  padding: 15px 10px;
+  padding: 15px 0px;
   /* Remove fixed positioning so it stays at the bottom of the content */
   /* position: static; */
   width: 100%;
