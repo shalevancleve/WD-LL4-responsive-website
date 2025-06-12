@@ -1,22 +1,42 @@
 /* Set a basic font and background color for the whole page */
 body {
-  font-family: Arial, sans-serif;
+  /* Use Open Sans for body text */
+  font-family: 'Open Sans', Arial, sans-serif;
   background-color: #f0f8f5; /* light greenish background */
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body is at least the height of the viewport */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling for better user experience */
+  -webkit-font-smoothing: antialiased; /* Smoother text rendering in WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smoother text rendering in Firefox */
+  scrollbar-width: thin; /* For Firefox: make scrollbar thinner */
+  scrollbar-color: #4caf50 transparent; /* For Firefox: color and transparent track */
+}
+
+/* Make sure the page always fills the full height of the browser */
+html, body {
+  height: 100%;
+  min-height: 100%;
 }
 
 /* Style the header and navigation bar */
 header {
-  background: linear-gradient(90deg, #2e8b57 80%, #4caf50 100%); /* soft green gradient */
+  /* Use a smooth gradient by spreading color stops from 0% to 100% */
+  background: linear-gradient(90deg, #2e8b57 0%, #4caf50 100%); /* smooth green gradient */
   color: white;
   padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* Increase left padding for more space around the title */
-  padding-left: 50px;
+  padding-left: 30px;
   padding-right: 30px;
+  flex-shrink: 0;
 }
 
 /* Make sure the site title stays on the left */
@@ -24,6 +44,11 @@ header h1 {
   margin: 0;
   font-size: 2em;
   text-align: left;
+}
+
+/* Use Montserrat for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 /* Navigation bar styles */
@@ -44,9 +69,9 @@ nav a:hover {
 
 /* Hero section styles */
 .hero {
-  /* Keep the background image and add a soft gradient overlay */
+  /* Make the gradient overlay just a bit lighter for better text contrast */
   background-image:
-    linear-gradient(rgba(178,223,219,0.85), rgba(46,139,87,0.5)),
+    linear-gradient(rgba(200,235,232,0.92), rgba(46,139,87,0.45)),
     url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80');
   background-size: cover;
   background-position: center;
@@ -59,46 +84,97 @@ nav a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 1.5em; /* Make hero section text larger */
+  flex-shrink: 0;
 }
 
 /* Destination cards section */
 .destinations {
-  background: linear-gradient(135deg, #e0f2f1 80%, #b2dfdb 100%); /* soft teal gradient */
+  /* Use a smooth gradient by spreading color stops from 0% to 100% */
+  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); /* smooth teal gradient */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap; /* Prevent wrapping so cards stay in a row */
+  overflow-x: auto;  /* Allow horizontal scrolling if there are many cards */
+  justify-content: flex-start; /* Align cards to the left */
   gap: 20px; /* space between cards */
   padding: 30px 10px;
+  width: 100%;                /* Make sure section is not wider than the viewport */
+  max-width: 100%;            /* Prevent section from overflowing the viewport width */
+  box-sizing: border-box;     /* Include padding and border in the width */
+  /* Removed: max-width: 100vw; */
   /* background-color: #e0f2f1; /!* lighter teal *!/*/
+  /* Add smooth scrolling for a better user experience */
+  scroll-behavior: smooth;
+  scrollbar-width: thin; /* For Firefox: make scrollbar thinner */
+  scrollbar-color: #b2dfdb transparent; /* For Firefox: color and transparent track */
+  flex-shrink: 0;
+}
+
+/* For Webkit browsers (Chrome, Edge, Safari) */
+.destinations::-webkit-scrollbar {
+  height: 10px; /* Set scrollbar height */
+  background: transparent; /* Start transparent */
+  transition: background 0.3s;
+}
+
+.destinations::-webkit-scrollbar-thumb {
+  background: rgba(178, 223, 219, 0); /* Fully transparent by default */
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+/* Show scrollbar thumb on hover or focus */
+.destinations:hover::-webkit-scrollbar-thumb,
+.destinations:focus-within::-webkit-scrollbar-thumb {
+  background: rgba(178, 223, 219, 0.8); /* Fade in scrollbar thumb */
+}
+
+/* Show scrollbar track on hover or focus */
+.destinations:hover::-webkit-scrollbar,
+.destinations:focus-within::-webkit-scrollbar {
+  background: rgba(178, 223, 219, 0.2); /* Slightly visible track */
 }
 
 .card {
   background-color: white;
   border: 1px solid #c8e6c9;
   border-radius: 8px;
-  width: 250px;
+  width: 250px;         /* All cards have the same width */
+  min-width: 250px;     /* Prevent cards from shrinking */
+  max-width: 250px;     /* Prevent cards from growing */
+  height: 340px;        /* Set a fixed height for all cards */
+  box-sizing: border-box; /* Include padding and border in the height */
+  display: flex;        /* Use flex to align content vertically */
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center;         /* Center content horizontally */
   padding: 16px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.07);
   text-align: center;
   /* Add transition for smooth scaling and border effect */
   transition: transform 0.2s, border 0.2s;
+  flex: 0 0 auto;       /* Prevent cards from stretching or shrinking */
 }
 
 .card img {
-  width: 100%;
+  width: 100%;           /* Image fills the card width */
+  max-width: 100%;       /* Prevent image from overflowing its container */
+  height: 140px;         /* All images have the same height */
+  object-fit: cover;     /* Crop images to fill the area without stretching */
   border-radius: 6px;
-  height: 140px;
-  object-fit: cover;
+  display: block;
 }
 
 /* CTA (Call to Action) section */
 .cta {
-  background: linear-gradient(90deg, #388e3c 80%, #81c784 100%); /* soft green gradient */
+  /* Use a smooth gradient by spreading color stops from 0% to 100% */
+  background: linear-gradient(90deg, #388e3c 0%, #81c784 100%); /* smooth green gradient */
   color: white;
   text-align: center;
   padding: 30px 20px;
   /* Reduce extra bottom padding so there's less space under the button */
   padding-bottom: 40px;
+  flex-shrink: 0;
 }
 
 .cta button {
@@ -129,68 +205,84 @@ nav a:hover {
 
 /* Contact bar at the bottom */
 .contact-bar {
-  background: linear-gradient(90deg, #2e8b57 80%, #66bb6a 100%); /* soft green gradient */
+  /* Use a smooth gradient by spreading color stops from 0% to 100% */
+  background: linear-gradient(90deg, #2e8b57 0%, #66bb6a 100%); /* smooth green gradient */
   color: white;
   text-align: center;
   padding: 15px 10px;
   /* Remove fixed positioning so it stays at the bottom of the content */
-  position: static;
+  /* position: static; */
   width: 100%;
   left: auto;
   bottom: auto;
   display: block; /* Always show */
+  /* flex-shrink: 0; */
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 700px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 20px; /* Consistent padding for mobile */
-    padding-right: 15px;
-  }
-  header h1 {
-    font-size: 1.5em; /* Slightly smaller title */
-    margin-bottom: 10px;
-  }
-  nav {
-    width: 100%;
-    margin-top: 10px;
-    text-align: left;
-  }
-  nav a {
-    display: inline-block;
-    margin: 8px 10px 8px 0; /* More space between links */
-    font-size: 1em;
-  }
-  .hero {
-    padding: 40px 10px 40px 10px; /* Less padding on small screens */
-    min-height: 220px;
-    font-size: 1em;
-  }
-  .destinations {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 20px 5px;
-  }
-  .card {
-    width: 85%; /* Reduce width so cards don't stretch across the whole screen */
-    margin-bottom: 15px;
-  }
-  .card img {
-    height: 100px;
-  }
-  .cta {
-    padding: 20px 10px;
-    padding-bottom: 30px;
-  }
-  .cta button {
-    padding: 14px 20px;
-    font-size: 1em;
-  }
-  .contact-bar {
-    padding: 12px 5px;
-    font-size: 0.95em;
-  }
+/* The .banner class styles the banner area at the top of the page */
+.banner {
+  /* Already uses a smooth gradient from 0% to 100% */
+  background: linear-gradient(90deg, #388e3c 0%, #81c784 100%);
 }
+
+/* Main content wrapper to grow and fill space between header and contact bar */
+.main-content {
+  flex: 1 0 auto; /* Allow this section to grow and fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive design for smartphones and small screens */
+@media (max-width: 600px) {
+  /* Stack the destination cards vertically and enable vertical scrolling */
+  .destinations {
+    display: flex;              /* Use flex to stack cards */
+    flex-direction: column;     /* Stack cards vertically */
+    overflow-x: hidden;         /* Hide horizontal scroll bar */
+    overflow-y: auto;           /* Enable vertical scroll bar */
+    max-height: 80vh;           /* Limit height so vertical scroll appears if needed */
+    white-space: normal;        /* Allow normal wrapping */
+    padding: 0 5px;             /* Add a little space on the sides */
+  }
+
+  /* Make each card take up most of the screen width */
+  .card {
+    width: 95%;           /* Card is almost as wide as the screen */
+    max-width: 350px;     /* Prevent card from being too wide */
+    min-width: 200px;     /* Prevent card from being too narrow */
+    height: 340px;        /* Keep the same height for all cards */
+    margin: 16px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .card img {
+    width: 100%;         /* Image fills the card width */
+    height: 140px;       /* All images have the same height */
+    object-fit: cover;   /* Crop images to fill the area */
+    display: block;
+    border-radius: 6px;
+  }
+  /* ...existing code... */
+}
+
+/* Adjust heights for all major sections to fill the viewport on all screens */
+header {
+  flex-shrink: 0;
+}
+.hero {
+  flex-shrink: 0;
+}
+.destinations {
+  flex-shrink: 0;
+}
+.cta {
+  flex-shrink: 0;
+}
+.contact-bar {
+  flex-shrink: 0;
+}
+
