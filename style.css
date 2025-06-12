@@ -1,0 +1,188 @@
+/* Set a basic font and background color for the whole page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8f5; /* light greenish background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the header and navigation bar */
+header {
+  background: linear-gradient(90deg, #2e8b57 80%, #4caf50 100%); /* soft green gradient */
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Increase left padding for more space around the title */
+  padding-left: 50px;
+  padding-right: 30px;
+}
+
+/* Make sure the site title stays on the left */
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  text-align: left;
+}
+
+/* Navigation bar styles */
+nav {
+  margin-top: 0; /* Remove top margin for better alignment */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero section styles */
+.hero {
+  /* Keep the background image and add a soft gradient overlay */
+  background-image:
+    linear-gradient(rgba(178,223,219,0.85), rgba(46,139,87,0.5)),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 80px 20px 80px 20px;
+  text-align: center;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Destination cards section */
+.destinations {
+  background: linear-gradient(135deg, #e0f2f1 80%, #b2dfdb 100%); /* soft teal gradient */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* space between cards */
+  padding: 30px 10px;
+  /* background-color: #e0f2f1; /!* lighter teal *!/*/
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  width: 250px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  text-align: center;
+  /* Add transition for smooth scaling and border effect */
+  transition: transform 0.2s, border 0.2s;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* CTA (Call to Action) section */
+.cta {
+  background: linear-gradient(90deg, #388e3c 80%, #81c784 100%); /* soft green gradient */
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  /* Reduce extra bottom padding so there's less space under the button */
+  padding-bottom: 40px;
+}
+
+.cta button {
+  background-color: #fff;
+  color: #388e3c;
+  border: none;
+  padding: 16px 32px; /* Larger button */
+  border-radius: 12px; /* More rounded corners */
+  font-size: 1.1em;    /* Slightly larger text */
+  cursor: pointer;
+  margin-top: 15px;
+  /* Add transition for smooth scaling and border effect */
+  transition: transform 0.2s, border 0.2s;
+}
+
+/* Scale up and add border when hovering over the subscribe button */
+.cta button:hover {
+  background-color: #c8e6c9;
+  transform: scale(1.07); /* Slightly larger */
+  border: 2px solid #388e3c; /* Green border */
+}
+
+/* Scale up and add border when hovering over any destination card */
+.card:hover {
+  transform: scale(1.07); /* Slightly larger */
+  border: 2px solid #388e3c; /* Green border */
+}
+
+/* Contact bar at the bottom */
+.contact-bar {
+  background: linear-gradient(90deg, #2e8b57 80%, #66bb6a 100%); /* soft green gradient */
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  /* Remove fixed positioning so it stays at the bottom of the content */
+  position: static;
+  width: 100%;
+  left: auto;
+  bottom: auto;
+  display: block; /* Always show */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    /* Match increased left padding for mobile */
+    padding-left: 25px;
+    padding-right: 15px;
+  }
+  nav {
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .destinations {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+/* Responsive design for smaller screens */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  nav {
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .destinations {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}

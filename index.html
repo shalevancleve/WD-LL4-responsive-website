@@ -1,16 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>LiveLab 4 Demo</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <title>Eco-Friendly Travel</title>
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+  <!-- Header with navigation bar -->
+  <header>
+    <h1>Eco-Friendly Travel</h1>
+    <nav>
+      <!-- Navigation links -->
+      <a href="#hero">Home</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#cta">Get Involved</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero section with mission statement -->
+  <section class="hero" id="hero">
+    <h1>Exploring Sustainable Travel</h1>
+    <p>Discover beautiful destinations while protecting our planet. Join us in making travel eco-friendly and responsible!</p>
+  </section>
+
+  <!-- Destination cards section -->
+  <section class="destinations" id="destinations">
+    <!-- Card 1 -->
+    <div class="card">
+      <!-- Example image from Unsplash, you can replace with your own -->
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+        alt="Mountain Lake">
+      <h2>Lake Serenity</h2>
+      <p>Enjoy kayaking and hiking in a pristine, protected mountain lake region.</p>
+    </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+        alt="Forest Trail">
+      <h2>Greenwood Forest</h2>
+      <p>Explore lush forests with guided eco-tours and wildlife observation.</p>
+    </div>
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80"
+        alt="Beach Clean Up">
+      <h2>Sunny Shores</h2>
+      <p>Relax on clean beaches and join local beach clean-up events.</p>
+    </div>
+    <!-- Add more cards as needed -->
+  </section>
+
+  <!-- Call to Action section -->
+  <section class="cta" id="cta">
+    <h2>Ready to Travel Sustainably?</h2>
+    <p>Sign up for our newsletter to get tips and updates on eco-friendly travel!</p>
+    <button>Subscribe</button>
+  </section>
+
+  <!-- Contact bar at the bottom (hidden until scrolled to bottom) -->
+  <div class="contact-bar" id="contact">
+    <!-- Simple contact info -->
+    <span>Contact us: ecofriendlytravel@example.com | (123) 456-7890</span>
+  </div>
+
+  <!-- JavaScript to show contact bar when scrolled to bottom -->
+  <script>
+    // When the user scrolls to the bottom, show the contact bar
+    window.addEventListener('scroll', function () {
+      // Check if the user has scrolled to the bottom
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+        document.body.classList.add('scrolled-to-bottom');
+      } else {
+        document.body.classList.remove('scrolled-to-bottom');
+      }
+    });
+  </script>
 </body>
 
 </html>
